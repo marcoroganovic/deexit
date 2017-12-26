@@ -103,6 +103,14 @@ class Expect {
     this._typeCheck("function")();
   }
 
+  get object() {
+    if(this.actualValue && this._typeCheck("object")() && !Array.isArray(this.actualValue)) {
+      return true;
+    }
+
+    error(`expected object instead got ${typeof this.actualValue}`);
+  }
+
   get array() {
     if(this.shouldBeEqual) {
       if(this._typeCheck("object")() && Array.isArray(this.actualValue)) {
