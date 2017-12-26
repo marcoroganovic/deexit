@@ -1,7 +1,10 @@
 import {
+  $,
   displaySuccessfulTests,
   displayFailedTests
 } from "./dom";
+
+const $container = $('main');
 
 const describe = (section, callback) => {
   const erroMessages = [];
