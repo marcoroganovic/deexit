@@ -339,6 +339,15 @@ var Expect = function () {
       this._typeCheck("function")();
     }
   }, {
+    key: "object",
+    get: function get() {
+      if (this.actualValue && this._typeCheck("object")() && !Array.isArray(this.actualValue)) {
+        return true;
+      }
+
+      (0, _utils.error)("expected object instead got " + _typeof(this.actualValue));
+    }
+  }, {
     key: "array",
     get: function get() {
       if (this.shouldBeEqual) {
