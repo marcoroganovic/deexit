@@ -29,7 +29,7 @@ class Expect {
   }
 
   get not() {
-    this.invertCheck = true;
+    this.shouldBeTrue = false;
     return this;
   }
 

@@ -1,8 +1,8 @@
-describe('typechecks' () => {
+describe("typechecks", () => {
   
   it("should pass", () => {
     expect("string").to.not.be.equal("world");
-    expect('hello').to.be.equal('hello');
+    expect("hello").to.be.equal('hello');
     expect(1).to.be.equal(1);
     expect(0).to.not.be.equal(1);
   });
