@@ -267,6 +267,8 @@ var Expect = function () {
         }
       }
 
+      testValue = JSON.stringify(testValue);
+
       (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + testValue + " to not be equal to " + this.value);
     }
   }, {
