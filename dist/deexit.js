@@ -193,7 +193,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var it = function it(testName, callback) {
-  if (!cb) {
+  if (!callback) {
     return;
   }
 
@@ -289,6 +289,11 @@ var Expect = function () {
       }
 
       (0, _utils.error)("expected " + this.value + " to be " + (this.shouldBeEqual ? "truthy" : "falsy"));
+    }
+  }, {
+    key: "to",
+    get: function get() {
+      return this;
     }
   }, {
     key: "be",
