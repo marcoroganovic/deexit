@@ -7,7 +7,7 @@ import {
 const $target = $('main');
 
 const describe = (section, callback) => {
-  const erroMessages = [];
+  const errorMessages = [];
   
   if(!callback) {
     return;
