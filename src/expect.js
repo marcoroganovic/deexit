@@ -66,6 +66,8 @@ class Expect {
       }
     }
 
+    testValue = JSON.stringify(testValue);
+
     error(this.shouldBeEqual ? 
       `expected ${testValue} instead got ${this.value}` :
       `expected ${testValue} to not be equal to ${this.value}`
