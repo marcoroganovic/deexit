@@ -1,4 +1,6 @@
-import { describe, it, expect } from "./deexit";
+import describe from "./describe";
+import it from "./it";
+import expect from "./expect";
 
 // expose to window
 window.describe = describe;
