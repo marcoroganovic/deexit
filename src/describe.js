@@ -1,3 +1,8 @@
+import {
+  displaySuccessfulTests,
+  displayFailedTests
+} from "./dom";
+
 const describe = (section, callback) => {
   const erroMessages = [];
   
@@ -7,7 +12,7 @@ const describe = (section, callback) => {
 
   try {
     callback();
-    // displaySuccessfulTests(section, $target);
+    displaySuccessfulTests(section, $target);
   } catch(err) {
     errorMessages.push(err.message);
   } finally {
@@ -16,3 +21,5 @@ const describe = (section, callback) => {
     }
   }
 }
+
+export default describe;
