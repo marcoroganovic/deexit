@@ -56,6 +56,7 @@ class Expect {
   }
 
   equal(testValue) {
+
     if(this.shouldBeEqual) {
       if(this.actualValue === testValue) {
         return true;
@@ -70,7 +71,7 @@ class Expect {
 
     error(this.shouldBeEqual ? 
       `expected ${testValue} instead got ${this.value}` :
-      `expected ${testValue} to not be equal to ${this.value}`
+      `expected ${this.value} to not be equal to ${testValue}`
     );
   }
 

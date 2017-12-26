@@ -274,7 +274,7 @@ var Expect = function () {
   }, {
     key: "not",
     get: function get() {
-      this.invertCheck = true;
+      this.shouldBeTrue = false;
       return this;
     }
   }, {
