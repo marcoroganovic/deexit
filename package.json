@@ -1,0 +1,33 @@
+{
+  "name": "deexit",
+  "version": "1.0.0",
+  "description": "Simple JavaScript test runner",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoroganovic/deexit.git"
+  },
+  "keywords": [
+    "test",
+    "test-runner",
+    "js",
+    "library"
+  ],
+  "author": "Marco Roganovic <marcoroganovic@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoroganovic/deexit/issues"
+  },
+  "homepage": "https://github.com/marcoroganovic/deexit#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^3.9.0"
+  }
+}
