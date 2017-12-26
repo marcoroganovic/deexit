@@ -73,15 +73,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.expect = exports.it = exports.describe = undefined;
 
 var _deexit = __webpack_require__(1);
 
-var _deexit2 = _interopRequireDefault(_deexit);
+// expose to window
+window.describe = _deexit.describe;
+window.it = _deexit.it;
+window.expect = _deexit.expect;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.deexit = _deexit2.default;
-exports.default = _deexit2.default;
+exports.describe = _deexit.describe;
+exports.it = _deexit.it;
+exports.expect = _deexit.expect;
 
 /***/ }),
 /* 1 */
