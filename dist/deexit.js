@@ -111,6 +111,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _dom = __webpack_require__(2);
 
+var $container = (0, _dom.$)('main');
+
 var describe = function describe(section, callback) {
   var erroMessages = [];
 
