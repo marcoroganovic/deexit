@@ -14,8 +14,13 @@ const extend = (obj, proto) => {
   }
 }
 
+const error = message => {
+  throw new Error(message);
+}
+
 export {
   define,
   isObject,
-  extend
+  extend,
+  error
 }
