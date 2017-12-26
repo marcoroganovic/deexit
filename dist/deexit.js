@@ -257,6 +257,7 @@ var Expect = function () {
   }, {
     key: "equal",
     value: function equal(testValue) {
+
       if (this.shouldBeEqual) {
         if (this.actualValue === testValue) {
           return true;
@@ -269,7 +270,7 @@ var Expect = function () {
 
       testValue = JSON.stringify(testValue);
 
-      (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + testValue + " to not be equal to " + this.value);
+      (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + this.value + " to not be equal to " + testValue);
     }
   }, {
     key: "not",
