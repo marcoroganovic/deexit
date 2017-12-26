@@ -1,5 +1,5 @@
 const it = (testName, callback) => {
-  if(!cb) {
+  if(!callback) {
     return;
   }
 

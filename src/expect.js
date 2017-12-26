@@ -47,6 +47,10 @@ class Expect {
     error(`expected ${this.value} to be ${this.shouldBeEqual ? "truthy" : "falsy"}`);
   }
 
+  get to() {
+    return this;
+  }
+
   get be() {
     return this;
   }
