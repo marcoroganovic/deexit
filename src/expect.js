@@ -1,3 +1,5 @@
+import deepEqual from "fast-deep-equal";
+import arraysEqual from "arrays-equal";
 import { error } from "./utils";
 
 class Expect {
@@ -51,6 +53,10 @@ class Expect {
     return this;
   }
 
+  get should() {
+    return this;
+  }
+
   get be() {
     return this;
   }
@@ -68,6 +74,41 @@ class Expect {
     }
 
     testValue = JSON.stringify(testValue);
+
+    error(this.shouldBeEqual ? 
+      `expected ${testValue} instead got ${this.value}` :
+      `expected ${this.value} to not be equal to ${testValue}`
+    );
+  }
+
+  deepEqual(testValue) {
+    if(this.shouldBeEqual) {
+      if(deepEqual(this.actualValue, testValue)) {
+        return true;
+      }
+    } else {
+      if(!deepEqual(this.actualValue, testValue)) {
+        return true;
+      }
+    }
+
+    error(this.shouldBeEqual ? 
+      `expected ${testValue} instead got ${this.value}` :
+      `expected ${this.value} to not be equal to ${testValue}`
+    );
+  }
+
+
+  arraysEqual(testValue) {
+    if(this.shouldBeEqual) {
+      if(arraysEqual(this.actualValue, testValue)) {
+        return true;
+      }
+    } else {
+      if(!arraysEqual(this.actualValue, testValue)) {
+        return true;
+      }
+    }
 
     error(this.shouldBeEqual ? 
       `expected ${testValue} instead got ${this.value}` :
