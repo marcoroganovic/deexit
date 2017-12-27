@@ -221,7 +221,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = __webpack_require__(5);
+var _fastDeepEqual = __webpack_require__(5);
+
+var _fastDeepEqual2 = _interopRequireDefault(_fastDeepEqual);
+
+var _arraysEqual2 = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"arrays-equal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _arraysEqual3 = _interopRequireDefault(_arraysEqual2);
+
+var _utils = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -273,6 +283,36 @@ var Expect = function () {
       (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + this.value + " to not be equal to " + testValue);
     }
   }, {
+    key: "deepEqual",
+    value: function deepEqual(testValue) {
+      if (this.shouldBeEqual) {
+        if ((0, _fastDeepEqual2.default)(this.actualValue, testValue)) {
+          return true;
+        }
+      } else {
+        if (!(0, _fastDeepEqual2.default)(this.actualValue, testValue)) {
+          return true;
+        }
+      }
+
+      (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + this.value + " to not be equal to " + testValue);
+    }
+  }, {
+    key: "arraysEqual",
+    value: function arraysEqual(testValue) {
+      if (this.shouldBeEqual) {
+        if ((0, _arraysEqual3.default)(this.actualValue, testValue)) {
+          return true;
+        }
+      } else {
+        if (!(0, _arraysEqual3.default)(this.actualValue, testValue)) {
+          return true;
+        }
+      }
+
+      (0, _utils.error)(this.shouldBeEqual ? "expected " + testValue + " instead got " + this.value : "expected " + this.value + " to not be equal to " + testValue);
+    }
+  }, {
     key: "not",
     get: function get() {
       this.shouldBeTrue = false;
@@ -295,6 +335,11 @@ var Expect = function () {
     }
   }, {
     key: "to",
+    get: function get() {
+      return this;
+    }
+  }, {
+    key: "should",
     get: function get() {
       return this;
     }
@@ -374,6 +419,55 @@ exports.default = function (value) {
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  var arrA = Array.isArray(a),
+      arrB = Array.isArray(b),
+      i;
+
+  if (arrA && arrB) {
+    if (a.length != b.length) return false;
+    for (i = 0; i < a.length; i++) {
+      if (!equal(a[i], b[i])) return false;
+    }return true;
+  }
+
+  if (arrA != arrB) return false;
+
+  if (a && b && (typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'object' && (typeof b === 'undefined' ? 'undefined' : _typeof(b)) === 'object') {
+    var keys = Object.keys(a);
+    if (keys.length !== Object.keys(b).length) return false;
+
+    var dateA = a instanceof Date,
+        dateB = b instanceof Date;
+    if (dateA && dateB) return a.getTime() == b.getTime();
+    if (dateA != dateB) return false;
+
+    var regexpA = a instanceof RegExp,
+        regexpB = b instanceof RegExp;
+    if (regexpA && regexpB) return a.toString() == b.toString();
+    if (regexpA != regexpB) return false;
+
+    for (i = 0; i < keys.length; i++) {
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+    }for (i = 0; i < keys.length; i++) {
+      if (!equal(a[keys[i]], b[keys[i]])) return false;
+    }return true;
+  }
+
+  return false;
+};
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -1,5 +1,5 @@
 import deepEqual from "fast-deep-equal";
-import arraysEqual from "arrays-equal";
+import arraysEqual from "array-equal";
 import { error } from "./utils";
 
 class Expect {
