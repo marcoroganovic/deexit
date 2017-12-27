@@ -225,11 +225,11 @@ var _fastDeepEqual = __webpack_require__(5);
 
 var _fastDeepEqual2 = _interopRequireDefault(_fastDeepEqual);
 
-var _arraysEqual2 = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"arrays-equal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _arrayEqual = __webpack_require__(6);
 
-var _arraysEqual3 = _interopRequireDefault(_arraysEqual2);
+var _arrayEqual2 = _interopRequireDefault(_arrayEqual);
 
-var _utils = __webpack_require__(6);
+var _utils = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -301,11 +301,11 @@ var Expect = function () {
     key: "arraysEqual",
     value: function arraysEqual(testValue) {
       if (this.shouldBeEqual) {
-        if ((0, _arraysEqual3.default)(this.actualValue, testValue)) {
+        if ((0, _arrayEqual2.default)(this.actualValue, testValue)) {
           return true;
         }
       } else {
-        if (!(0, _arraysEqual3.default)(this.actualValue, testValue)) {
+        if (!(0, _arrayEqual2.default)(this.actualValue, testValue)) {
           return true;
         }
       }
@@ -468,6 +468,21 @@ module.exports = function equal(a, b) {
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function equal(arr1, arr2) {
+  var length = arr1.length;
+  if (length !== arr2.length) return false;
+  for (var i = 0; i < length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }return true;
+};
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
