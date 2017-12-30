@@ -13,11 +13,11 @@ class Expect {
   _typeCheck(type) {
     return () => {
       if(this.shouldBeEqual) {
-        if(typeof this.actualValue === type) {
+        if(Object.is(typeof this.actualValue, type)) {
           return true;
         }
       } else {
-        if(typeof this.actualValue !== type) {
+        if(!Object.is(typeof this.actualValue, type)) {
           return true;
         }
       }
@@ -41,7 +41,7 @@ class Expect {
         return true;
       }
     } else {
-      if(!!this.actualValue === false) {
+      if(Object.is(!!this.actualValue, false)) {
         return true;
       }
     }
@@ -64,11 +64,11 @@ class Expect {
   equal(testValue) {
 
     if(this.shouldBeEqual) {
-      if(this.actualValue === testValue) {
+      if(Object.is(this.actualValue, testValue)) {
         return true;
       }
     } else {
-      if(this.actualValue !== testValue) {
+      if(!Object.is(this.actualValue, testValue)) {
         return true;
       }
     }
