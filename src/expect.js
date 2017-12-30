@@ -170,6 +170,28 @@ class Expect {
     );
   }
 
+  match(regex) {
+    if(Object.is(typeof this.actualValue, "string")) {
+      if(this.shouldBeEqual) {
+        if(this.actualValue.match(regex)) {
+          return true;
+        }
+
+      } else {
+        if(!this.actualValue.match(regex)) {
+          return true;
+        }
+      }
+    }
+
+    regex = JSON.stringify(regex);
+
+    error(this.shouldBeEqual ?
+      `expected ${this.value} to match regex: ${regex}` : 
+      `expected ${this.value} to not match regex: ${regex}`
+    );
+  }
+
 }
 
 export default (value) => new Expect(value);
